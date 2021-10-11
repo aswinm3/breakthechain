@@ -1,22 +1,18 @@
 <?php
 session_start();
-include("connection.php");
-if(isset($_POST['submit']))
-{
+include "connection.php";
+if (isset($_POST['submit'])) {
     $id = $_POST['citizenid'];
     $type = $_POST['citizenidtype'];
-    $query2="select * from citizen where C_IDType='$type' and C_ID = '$id' ";
-    $results = mysqli_query($con,$query2);
+    $query2 = "select * from citizen where C_IDType='$type' and C_ID = '$id' ";
+    $results = mysqli_query($con, $query2);
     $count = mysqli_num_rows($results);
-    if($count==0)
-    {
+    if ($count == 0) {
         echo "No details found";
-    }
-    else
-    {
-      $_SESSION['citizenid']=$id;
-      $_SESSION['citizenidtype']=$type;
-      header('Location: citizendetails.php');
+    } else {
+        $_SESSION['citizenid'] = $id;
+        $_SESSION['citizenidtype'] = $type;
+        header('Location: citizendetails.php');
     }
 }
 ?>
@@ -55,7 +51,7 @@ if(isset($_POST['submit']))
                <label>Citizen ID type</label>
             </div>
             <div class="field">
-               <input name="citizenid" type="password" required>
+               <input name="citizenid" type="text" required>
                <label>Citizen ID Number</label>
             </div>
             <div class="field">

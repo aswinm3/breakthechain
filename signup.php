@@ -16,9 +16,10 @@ if(isset($_POST['submit2']))
             $sq= "insert into admin (Uname,Pname) values ('$u','$p')";
 
             if(mysqli_query($con, $sq))
-            {}
+            {
+                header('Location: login.php');
+            }
         } 
-        header('Location: login.php');
     }
     elseif($count>0)
     {

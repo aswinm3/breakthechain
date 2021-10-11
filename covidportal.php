@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="covidportal.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
   </head>
-  <body> 
+  <body>
   <nav>
       <input type="checkbox" id="check">
       <label for="check" class="checkbtn">
@@ -25,14 +25,13 @@
       <div id="welcome">
         Welcome
     </div>
-    <div id="name"> 
+    <div id="name">
     <?php
-      session_start();
-      if(isset($_SESSION['username']))
-      {
-        echo ($_SESSION['username']." !");
-      }
-    ?>
+session_start();
+if (isset($_SESSION['username'])) {
+    echo ($_SESSION['username'] . " !");
+}
+?>
     </div>
 <div class="blog-card">
 <input type="radio" name="select" id="tap-1" checked>

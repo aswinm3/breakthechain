@@ -1,21 +1,19 @@
 <?php
 session_start();
-include("connection.php");
-if(isset($_POST['submitarea']))
-{
+include "connection.php";
+if (isset($_POST['submitarea'])) {
     $w = $_POST['ward'];
     $d = $_POST['dist'];
-    $query2="select * from citizen where Ward_No='$w' and District = '$d' ";
-    $results = mysqli_query($con,$query2);
+    $query2 = "select * from citizen where Ward_No='$w' and District = '$d' ";
+    $results = mysqli_query($con, $query2);
     $count = mysqli_num_rows($results);
-    if($count==0)
-    {
-        $err_m='No data found';
+    if ($count == 0) {
+        $err_m = 'No data found';
         echo "no details found";
-    }
-    else
-    {
-      header('Location: areadetails.php');
+    } else {
+        $_SESSION['ward'] = $w;
+        $_SESSION['dist'] = $d;
+        header('Location: areadetails.php');
     }
 }
 ?>
@@ -48,7 +46,7 @@ if(isset($_POST['submitarea']))
          <div class="title">
             Area Details
          </div>
-         <form action="areadetails.php" method="POST">
+         <form action="area.php" method="POST">
          <div class="field">
                <input name="ward" type="text" required>
                <label>Ward No</label>
@@ -57,21 +55,9 @@ if(isset($_POST['submitarea']))
                <input name="dist" type="text" required>
                <label>District</label>
             </div>
-            <!-- <div class="content">
-               <div class="checkbox">
-                  <input type="checkbox" id="remember-me">
-                  <label for="remember-me">Remember me</label>
-               </div>
-               <div class="pass-link">
-                  <a href="#">Forgot password?</a>
-               </div>
-            </div> -->
             <div class="field">
                <input name="submitarea" type="submit" value="Continue">
             </div>
-            <!-- <div class="signup-link">
-               Try another method <a href="#"></a>
-            </div> -->
          </form>
     </section>
   </body>

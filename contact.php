@@ -1,21 +1,19 @@
 <?php
 session_start();
-include("connection.php");
-if(isset($_POST['submit']))
-{
+include "connection.php";
+if (isset($_POST['submit'])) {
     $id = $_POST['citizenid'];
     $type = $_POST['citizenidtype'];
-    $query2="select * from citizen where C_IDType='$type' and C_ID = '$id' ";
-    $results = mysqli_query($con,$query2);
+    $query2 = "select * from citizen where C_IDType='$type' and C_ID = '$id' ";
+    $results = mysqli_query($con, $query2);
     $count = mysqli_num_rows($results);
-    if($count==0)
-    {
-        $err_m='No data found';
+    if ($count == 0) {
+        $err_m = 'No data found';
         echo "no details found";
-    }
-    else
-    {
-      header('Location: contactdetails.php');
+    } else {
+        $_SESSION['citizenid'] = $id;
+        $_SESSION['citizenidtype'] = $type;
+        header('Location: contactdetails.php');
     }
 }
 ?>
@@ -48,30 +46,18 @@ if(isset($_POST['submit']))
          <div class="title">
             Citizen Contact
          </div>
-         <form action="contactdetails.php" method="POST">
+         <form action="contact.php" method="POST">
          <div class="field">
                <input name="citizenidtype" type="text" required>
                <label>Citizen ID type</label>
             </div>
             <div class="field">
-               <input name="citizenid" type="password" required>
+               <input name="citizenid" type="text" required>
                <label>Citizen ID Number</label>
             </div>
-            <!-- <div class="content">
-               <div class="checkbox">
-                  <input type="checkbox" id="remember-me">
-                  <label for="remember-me">Remember me</label>
-               </div>
-               <div class="pass-link">
-                  <a href="#">Forgot password?</a>
-               </div>
-            </div> -->
             <div class="field">
                <input name="submit" type="submit" value="Continue">
             </div>
-            <!-- <div class="signup-link">
-               Try another method <a href="#"></a>
-            </div> -->
          </form>
     </section>
   </body>

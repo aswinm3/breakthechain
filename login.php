@@ -1,21 +1,18 @@
 <?php
 session_start();
-include("connection.php");
-if(isset($_POST['submit']))
-{
- $u = $_POST['username'];
- $p = $_POST['password'];
- $qu = "select * from admin where Uname = '$u' and Pname = '$p'";
- $results = mysqli_query($con,$qu);
- $count = mysqli_num_rows($results);
- if($count==1)
- { 
-    $_SESSION['username']=$u;
-    header('Location: covidportal.php'); }
+include "connection.php";
+if (isset($_POST['submit'])) {
+    $u = $_POST['username'];
+    $p = $_POST['password'];
+    $qu = "select * from admin where Uname = '$u' and Pname = '$p'";
+    $results = mysqli_query($con, $qu);
+    $count = mysqli_num_rows($results);
+    if ($count == 1) {
+        $_SESSION['username'] = $u;
+        header('Location: covidportal.php');}
 }
-if(isset($_POST['submit2']))
-{
-    header('Location: signup.php'); 
+if (isset($_POST['submit2'])) {
+    header('Location: signup.php');
 }
 ?>
 <!DOCTYPE html>
