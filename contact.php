@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
     <section id="entry">
       <div class="wrapper">
          <div class="title">
-            Citizen Contact
+            Contact Details
          </div>
          <form action="contact.php" method="POST">
          <div class="field">
